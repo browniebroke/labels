@@ -102,6 +102,7 @@ def fixture_response_get_bug(
         "description": "Bugs and problems with cookiecutter",
         "color": "ea707a",
         "default": True,
+        "archived_at": None,
     }
 
 
@@ -120,6 +121,7 @@ def fixture_response_get_docs(
         "description": "Tasks to write and update documentation",
         "color": "2abf88",
         "default": False,
+        "archived_at": None,
     }
 
 
@@ -138,6 +140,7 @@ def fixture_response_get_infra(
         "description": "Tasks related to Docker/CI etc.",
         "color": "f9d03b",
         "default": False,
+        "archived_at": None,
     }
 
 
@@ -312,6 +315,7 @@ def fixture_mock_sync(
                 "description": "Tasks related to managing dependencies",
                 "color": "43a2b7",
                 "default": False,
+                "archived_at": None,
             },
             status=201,
             content_type="application/json",
@@ -329,6 +333,7 @@ def fixture_mock_sync(
                 "description": "Bugs and problems with cookiecutter",
                 "color": "fcc4db",
                 "default": True,
+                "archived_at": None,
             },
             status=200,
             content_type="application/json",

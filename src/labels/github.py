@@ -33,6 +33,7 @@ class Label:
     _id: int = 0
     _node_id: str = ""
     _url: str = ""
+    _archived_at: Optional[str] = None
 
     @property
     def params_dict(self) -> Dict[str, Any]:
