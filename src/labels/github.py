@@ -35,6 +35,12 @@ class Label:
     _url: str = ""
     _archived_at: Optional[str] = None
 
+    @classmethod
+    def from_api(cls, data: Dict[str, Any]) -> "Label":
+        """Create a Label from a GitHub API response, ignoring unknown fields."""
+        known = {a.name.lstrip("_") for a in attr.fields(cls)}
+        return cls(**{k: v for k, v in data.items() if k in known})
+
     @property
     def params_dict(self) -> Dict[str, Any]:
         """Return label parameters as a dict."""
@@ -99,7 +105,7 @@ class Client:
 
             next_page = response.links.get("next", None)
 
-        return [Label(**label) for label in repo_labels]
+        return [Label.from_api(label) for label in repo_labels]
 
     def get_label(self, repo: Repository, *, name: str) -> Label:
         """Return a single Label from the repository.
@@ -122,7 +128,7 @@ class Client:
                 f"{response.reason}"
             )
 
-        return Label(**response.json())
+        return Label.from_api(response.json())
 
     def create_label(self, repo: Repository, *, label: Label) -> Label:
         """Create a new Label for the repository.
@@ -146,7 +152,7 @@ class Client:
                 f"{response.reason}"
             )
 
-        return Label(**response.json())
+        return Label.from_api(response.json())
 
     def edit_label(self, repo: Repository, *, name: str, label: Label) -> Label:
         """Update a GitHub issue label.
@@ -170,7 +176,7 @@ class Client:
                 f"{response.reason}"
             )
 
-        return Label(**response.json())
+        return Label.from_api(response.json())
 
     def delete_label(self, repo: Repository, *, name: str) -> None:
         """Delete a GitHub issue label.

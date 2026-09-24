@@ -103,6 +103,7 @@ def fixture_response_get_bug(
         "color": "ea707a",
         "default": True,
         "archived_at": None,
+        "archived_by": None,
     }
 
 
@@ -122,6 +123,7 @@ def fixture_response_get_docs(
         "color": "2abf88",
         "default": False,
         "archived_at": None,
+        "archived_by": None,
     }
 
 
@@ -141,6 +143,7 @@ def fixture_response_get_infra(
         "color": "f9d03b",
         "default": False,
         "archived_at": None,
+        "archived_by": None,
     }
 
 
@@ -316,6 +319,7 @@ def fixture_mock_sync(
                 "color": "43a2b7",
                 "default": False,
                 "archived_at": None,
+                "archived_by": None,
             },
             status=201,
             content_type="application/json",
@@ -334,6 +338,7 @@ def fixture_mock_sync(
                 "color": "fcc4db",
                 "default": True,
                 "archived_at": None,
+                "archived_by": None,
             },
             status=200,
             content_type="application/json",
