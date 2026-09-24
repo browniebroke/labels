@@ -33,7 +33,6 @@ class Label:
     _id: int = 0
     _node_id: str = ""
     _url: str = ""
-    _archived_at: Optional[str] = None
 
     @classmethod
     def from_api(cls, data: Dict[str, Any]) -> "Label":
